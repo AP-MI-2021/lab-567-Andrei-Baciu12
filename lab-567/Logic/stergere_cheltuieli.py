@@ -1,0 +1,3 @@
+
+def stergere_cheltuieli():
+
