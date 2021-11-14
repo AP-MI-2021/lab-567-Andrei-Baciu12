@@ -67,7 +67,7 @@ def update(lista_cheltuieli, noua_cheltuiala):
     return lista_actualizata
 
 
-def delete(lista_cheltuieli: list, numar_apartament: int):
+def delete(lista_cheltuieli: list, numar_apartament):
     """
     Functia sterge cheltuiala anumitui apartament
     :param lista_cheltuieli: lista memorata de cheltuieli

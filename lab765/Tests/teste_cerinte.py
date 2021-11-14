@@ -1,4 +1,4 @@
-from Domain.cheltuiala import get_numar_apartament
+from Domain.cheltuiala import get_suma, get_numar_apartament
 from Logic.CRUD import creeaza_cheltuiala
 from Logic.afisare_sume_lunare import afisare_sume_lunare
 from Logic.determinare_valoare_mare import determina_cea_mai_mare_cheltuiala
@@ -27,7 +27,7 @@ def test_ordonare_descrescator_suma():
     lista = creeaza_cheltuiala(4, 4, 200, '12.01.2021', 'alte cheltuieli')
 
     list = ordonare_descrescator_suma(lista)
-    assert get_numar_apartament(list[0]) == 6
+    assert get_suma(list[0]) == 300
     assert get_numar_apartament(list[1]) == 5
 
 
@@ -49,7 +49,12 @@ def test_afisare_sume_lunare():
     lista = creeaza_cheltuiala(4, 4, 200, '12.10.2021', 'alte cheltuieli')
 
     result = afisare_sume_lunare(lista)
-    assert len(result) == 2
+    assert len(result) == 1
     assert result[1] == {'luna': 9, 'suma': 400}
     assert result[2] == {'luna': 10, 'suma': 450}
 
+
+def teste():
+    test_afisare_sume_lunare()
+    test_determina_cea_mai_mare_cheltuiala()
+    test_ordonare_descrescator_suma()

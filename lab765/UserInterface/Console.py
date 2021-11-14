@@ -29,19 +29,23 @@ def handle_new_list(list_versions, current_versions, cheltuieli):
 
 
 def handle_undo(list_versions, current_versions):
-    if current_versions < 1:
-        print("Nu se mai poate face undo!")
-        return
-    current_versions -= 1
-    return list_versions[current_versions], current_versions
+    try:
+        if current_versions < 1:
+            return list_versions[current_versions], current_versions
+        current_versions -= 1
+        return list_versions[current_versions], current_versions
+    except ValueError as ve:
+        print('Eroare:', ve)
 
 
 def handle_redo(list_versions, current_versions):
-    if current_versions == len(list_versions) - 1:
-        print("Nu se mai poate face redo!")
-        return
-    current_versions += 1
-    return list_versions[current_versions], current_versions
+    try:
+        if current_versions >= len(list_versions) - 1:
+            return list_versions[current_versions], current_versions
+        current_versions += 1
+        return list_versions[current_versions], current_versions
+    except ValueError as ve:
+        print('Eroare:', ve)
 
 
 def handle_afisare_cheltuieli_luna(cheltuieli):
@@ -144,12 +148,12 @@ def handle_stergere(lista):
 
 def handle_add(cheltuieli):
     try:
-        id = int(input("Dati id-ul apartamentului: "))
+        id_ = int(input("Dati id-ul apartamentului: "))
         numar_apartament = int(input("Dati numarul apartamentului: "))
         suma = float(input("Dati suma cheltuielii: "))
         data = input("Dati data aferenta cheltuielii: ")
         tipul = input("Dati tipul cheltuielii: ")
-        return create(cheltuieli, id, numar_apartament, suma, data, tipul)
+        return create(cheltuieli, id_, numar_apartament, suma, data, tipul)
     except ValueError as ve:
         print("Eroare: {}".format(ve))
     return cheltuieli
@@ -177,12 +181,12 @@ def handle_show_details(cheltuieli):
 def handle_update(cheltuieli):
     try:
 
-        id = int(input("Dati id cheltuiala: "))
+        id_ = int(input("Dati id cheltuiala: "))
         numar_ap = int(input('Dati numar apartament: '))
         suma = float(input('dati suma aferenta cheltuielii: '))
         data = input('dati data: ')
         tipul = input('dati tipul de cheltuiala: ')
-        return update(cheltuieli, creeaza_cheltuiala(id, numar_ap, suma, data, tipul))
+        return update(cheltuieli, creeaza_cheltuiala(id_, numar_ap, suma, data, tipul))
     except ValueError as ve:
         print("Eroare: {}".format(ve))
     return cheltuieli

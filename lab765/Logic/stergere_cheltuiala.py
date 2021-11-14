@@ -4,7 +4,7 @@ from Logic.CRUD import delete
 
 def stergere_cheltuiala(nr_ap, lista):
     """
-    Functia sterge o cheltuiala din lista de cheltuieli a unui apartament a carui numar il introducem.
+    Functia sterge o cheltuiala din lista de cheltuieli a unui apartament al carui numar il introducem.
     :param nr_ap: numarul apartamentului
     :param lista: lista de cheltuieli
     :return: lista de cheltuieli fara cheltuiala stearsa

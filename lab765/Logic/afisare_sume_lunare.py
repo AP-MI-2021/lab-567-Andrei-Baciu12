@@ -12,16 +12,17 @@ def afisare_sume_lunare(cheltuieli):
         suma = get_suma(cheltuiala)
         data = get_data(cheltuiala)
         nr_ap = get_numar_apartament(cheltuiala)
-        luna = data[3] + data[4]
-        if nr_ap not in result:
-            result[nr_ap] = {}
-            result[nr_ap]['luna'] = luna
-            result[nr_ap]['suma'] = suma
-        else:
-            if luna in result[nr_ap]['luna']:
-
-                result[nr_ap]['suma'] = result[nr_ap]['suma'] + suma
-            else:
+        if data is str:
+            luna = data[3] + data[4]
+            if nr_ap not in result:
+                result[nr_ap] = {}
                 result[nr_ap]['luna'] = luna
                 result[nr_ap]['suma'] = suma
+            else:
+                if luna in result[nr_ap]['luna']:
+
+                    result[nr_ap]['suma'] = result[nr_ap]['suma'] + suma
+                else:
+                    result[nr_ap]['luna'] = luna
+                    result[nr_ap]['suma'] = suma
     return result

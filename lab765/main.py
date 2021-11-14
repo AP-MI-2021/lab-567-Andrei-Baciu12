@@ -1,8 +1,10 @@
-from UserInterface.Console import run_ui
+from Tests.undo_redo_test import test_undo_redo
+from UserInterface.alege_un_meniu import alege_meniu
 
-# from UserInterface.help import command_line
+
+def main():
+    alege_meniu()
 
 
-list = []
-list = run_ui(list)
-# list = command_line(list)
+test_undo_redo()
+main()

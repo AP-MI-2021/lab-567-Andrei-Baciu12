@@ -20,3 +20,8 @@ def get_data(cheltuiala):
 
 def get_tipul_cheltuielii(cheltuiala):
     return cheltuiala([4])
+
+
+def get_str(cheltuiala):
+    return(f'Cheltuiala de la {get_numar_apartament(cheltuiala)} cu id {get_id(cheltuiala)} este in valoare de\
+    {get_suma(cheltuiala)} din data de {get_data(cheltuiala)} si e de tip {get_tipul_cheltuielii(cheltuiala)}')

@@ -1,7 +1,7 @@
-def creeaza_cheltuiala(id, numar_apartament, suma, data, tipul_cheltuielii):
+def creeaza_cheltuiala(id_: int, numar_apartament, suma, data: str, tipul_cheltuielii):
     """
     Functia creeaza o cheltuiala si o returneaza ca un dictionar
-    :param id: id-ul cheltuiala
+    :param id_: id-ul cheltuiala
     :param numar_apartament: numar apartament aferent cheltuielii
     :param suma: suma cheltuiala
     :param data: data cheltuielii
@@ -9,7 +9,7 @@ def creeaza_cheltuiala(id, numar_apartament, suma, data, tipul_cheltuielii):
     :return: o cheltuiala
     """
     return {
-        'id-ul': id,
+        'id': id_,
         'nr_ap': numar_apartament,
         'suma': suma,
         'data': data,
@@ -24,7 +24,7 @@ def get_id(cheltuiala):
     :param cheltuiala: o cheltuiala
     :return: id-ul cheltuielii ca parametru
     """
-    return cheltuiala['id-ul']
+    return cheltuiala['id']
 
 
 def get_numar_apartament(cheltuiala):
@@ -33,7 +33,10 @@ def get_numar_apartament(cheltuiala):
     :param cheltuiala:cheltuiala
     :return:numarul apartamentului
     """
-    return cheltuiala['nr_ap']
+    try:
+        return cheltuiala['nr_ap']
+    except TypeError as ve:
+        print("Eroare: {}".format(ve))
 
 
 def get_suma(cheltuiala):
@@ -42,11 +45,17 @@ def get_suma(cheltuiala):
     :param cheltuiala: o cheltuiala
     :return: suma cheltuielii ca parametru
     """
-    return cheltuiala['suma']
+    try:
+        return cheltuiala['suma']
+    except TypeError as ve:
+        print("Eroare: {}".format(ve))
 
 
 def get_data(cheltuiala):
-    return cheltuiala['data']
+    try:
+        return cheltuiala['data']
+    except TypeError as ve:
+        print("Eroare: {}".format(ve))
 
 
 def get_tipul_cheltuielii(cheltuiala):
@@ -60,4 +69,4 @@ def get_tipul_cheltuielii(cheltuiala):
 
 def get_str(cheltuiala):
     return f'Cheltuiala de la nr. {get_numar_apartament(cheltuiala)} cu id {get_id(cheltuiala)} din \
-{get_data(cheltuiala)} este in valoare de {get_suma(cheltuiala)} si este de tipul {get_tipul_cheltuielii(cheltuiala)}'
+ {get_data(cheltuiala)} este in valoare de {get_suma(cheltuiala)} si este de tipul {get_tipul_cheltuielii(cheltuiala)}'
